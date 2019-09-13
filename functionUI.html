@@ -1,0 +1,72 @@
+<head>
+  <script src="functions.js"></script>
+</head>
+
+<body>
+  <h1>Pick the algorithm you want to interact with!</h1>
+  <select id="algorithmList">
+    <option value = "triangle">triange</option>
+    <option value = "fibonacci">fibonacci</option>
+    <option value = "countHi">countHi</option>
+    <option value = "sumDigits">sumDigits</option>
+    <option value="parenBit">parenBit</option>
+    <option value="countPairs">countPairs</option>
+    <option value="strCount">strCount</option>
+    <option value="strCopies">strCopies</option>
+  </select>
+  <br>
+  <p>Input: </p>
+  <p>Note: If the input is a string, do NOT place quotes around the word.<br>
+    For Example: If you want to enter: 'hello world', you should enter: hello world
+  </p>
+  <input type="text" id="funcInput">
+  <br>
+  <button type="button" onclick="showResult();">Submit</button>
+  <br>
+  <br>
+  <p id="result"></p>
+  <br>
+  <!--<p>Here is the code for the function:</p>
+  <p id="code"></p>-->
+
+  <script>
+    function showResult() {
+      // get users algorithm and input(s)
+      alg = document.getElementById("algorithmList").value;
+      inp = document.getElementById("funcInput").value;
+
+      // run users algorithm with specified input and output result onto page
+      if(!isNaN(inp)) {
+        result = eval(alg + '(' + inp + ')');
+      }
+      else {
+        result = eval(alg + '(\'' + inp + '\')');
+      }
+      document.getElementById("result").innerHTML = result;
+
+      // output code for the function submitted onto the webpage
+      var info = document.createElement("P");
+      info.innerHTML = "The code for " + alg + " is: ";
+      document.body.appendChild(info);
+
+      var f = document.createElement("P");
+      f.setAttribute("id","code");
+      f.innerHTML = eval(alg + ".toString()").replace('\n','<br>');
+      document.body.appendChild(f);
+    }
+  </script>
+</body>
+
+<!--
+TODO: Make the number of input tags created dependent on the
+TODO function chosen
+TODO Will need to make a new submit button that just submits the algorithmn.
+TODO then from there can use function: params() and a loop with something like
+TODO document.body.insertBefore(s,document.getElementById("result"));
+TODO to add the input tags
+TODO Then I can proceed with the rest of the code
+
+TODO also try to make the .replace work to make the code output have proper
+TODO indentation (at least new line breaks, maybe tabs for if statements
+TODO if possible)
+-->
