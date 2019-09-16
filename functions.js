@@ -33,17 +33,6 @@ function sumDigits(n) {
 }
 
 // 4 of my choice
-/*function parenBit(str) {
-  if(str.substring(0,1) == "(" && str.substring(str.length-1) == ")") {
-    return str;
-  }
-  else if(!str.substring(0,1) == "(") {
-    return parenBit(str.substring(1));
-  }
-  else {
-    return parenBit(str.substring(0,str.length-1));
-  }
-}*/
 function parenBit(str) {
   if(!(str.substring(0,1) == "(")) {
     return parenBit(str.substring(1));
