@@ -24,9 +24,10 @@ function drawCircle(x, y, d) {
     //drawCircle(x, y-d*0.5, d*0.5);
   }
 }
-
+/*
 function mandelbrot() {
   for(var px = 0; px < width; px++) {
     for(var py =0; py < height; py++)
   }
 }
+*/

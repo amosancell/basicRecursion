@@ -33,6 +33,17 @@ function sumDigits(n) {
 }
 
 // 4 of my choice
+/*function parenBit(str) {
+  if(str.substring(0,1) == "(" && str.substring(str.length-1) == ")") {
+    return str;
+  }
+  else if(!str.substring(0,1) == "(") {
+    return parenBit(str.substring(1));
+  }
+  else {
+    return parenBit(str.substring(0,str.length-1));
+  }
+}*/
 function parenBit(str) {
   if(!(str.substring(0,1) == "(")) {
     return parenBit(str.substring(1));
@@ -53,7 +64,7 @@ function countPairs(str) {
     return 1 + countPairs(str.substring(1));
   }
   else {
-    countPairs(str.substring(1));
+    return countPairs(str.substring(1));
   }
 }
 
@@ -62,7 +73,7 @@ function strCount(str, sub) {
     return 0;
   }
   else if (str.substring(0,sub.length) == sub) {
-    return 1 + strCount(strsubstring(sub.length),sub);
+    return 1 + strCount(str.substring(sub.length),sub);
   }
   else {
     return strCount(str.substring(1),sub);

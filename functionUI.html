@@ -15,58 +15,57 @@
     <option value="strCopies">strCopies</option>
   </select>
   <br>
-  <p>Input: </p>
-  <p>Note: If the input is a string, do NOT place quotes around the word.<br>
-    For Example: If you want to enter: 'hello world', you should enter: hello world
-  </p>
-  <input type="text" id="funcInput">
-  <br>
-  <button type="button" onclick="showResult();">Submit</button>
-  <br>
-  <br>
-  <p id="result"></p>
-  <br>
-  <!--<p>Here is the code for the function:</p>
-  <p id="code"></p>-->
+  <button type="button" onclick="showParameters();">Choose Algorithm!</button>
+  <div id="parameters"></div>
+  <button type="button" onclick="showResult();" style="visibility:hidden" id="paramButton">
+    Submit inputs!
+  </button>
+  <div id="results"></div>
 
   <script>
+
+    function showParameters() {
+      var alg = document.getElementById("algorithmList").value;
+      var p = eval("params(" + alg + ")");
+      var paramSpot = document.getElementById("parameters");
+      paramSpot.innerHTML = "";
+      for(let i=0; i < p.length; i++) {
+        var info = document.createElement("p");
+        info.innerHTML = "Enter " + p[i] + ":<br>";
+        var inp = document.createElement("input");
+        inp.setAttribute("type", "text");
+        inp.setAttribute("id", p[i]);
+        var bk = document.createElement("br");
+        paramSpot.appendChild(info);
+        paramSpot.appendChild(inp);
+        paramSpot.appendChild(bk);
+      }
+      document.getElementById("paramButton").style.visibility = "visible";
+      document.getElementById("results").innerHTML = "";
+    }
+
     function showResult() {
-      // get users algorithm and input(s)
       alg = document.getElementById("algorithmList").value;
-      inp = document.getElementById("funcInput").value;
-
-      // run users algorithm with specified input and output result onto page
-      if(!isNaN(inp)) {
-        result = eval(alg + '(' + inp + ')');
+      var p = eval("params(" + alg + ")");
+      console.log("p",p);
+      inputs = {};
+      p.forEach(function(parameterName) {
+        inputs[parameterName] = document.getElementById(parameterName).value;
+      });
+      inpStr = "";
+      for(let key in inputs) {
+        if(isNaN(inputs[key])) {
+          inpStr += "\'" + inputs[key] + "\', ";
+        }
+        else {
+          inpStr += inputs[key] + ", ";
+        }
       }
-      else {
-        result = eval(alg + '(\'' + inp + '\')');
-      }
-      document.getElementById("result").innerHTML = result;
-
-      // output code for the function submitted onto the webpage
-      var info = document.createElement("P");
-      info.innerHTML = "The code for " + alg + " is: ";
-      document.body.appendChild(info);
-
-      var f = document.createElement("P");
-      f.setAttribute("id","code");
-      f.innerHTML = eval(alg + ".toString()").replace('\n','<br>');
-      document.body.appendChild(f);
+      console.log(inpStr);
+      inpStr = inpStr.substring(0,inpStr.length-1);
+      result = eval(alg + "(" + inpStr + ");");
+      document.getElementById("results").innerHTML = "";
+      document.getElementById("results").innerHTML = result;
     }
   </script>
 </body>
-
-<!--
-TODO: Make the number of input tags created dependent on the
-TODO function chosen
-TODO Will need to make a new submit button that just submits the algorithmn.
-TODO then from there can use function: params() and a loop with something like
-TODO document.body.insertBefore(s,document.getElementById("result"));
-TODO to add the input tags
-TODO Then I can proceed with the rest of the code
-
-TODO also try to make the .replace work to make the code output have proper
-TODO indentation (at least new line breaks, maybe tabs for if statements
-TODO if possible)
--->
