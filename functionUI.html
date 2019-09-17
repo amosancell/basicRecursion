@@ -1,8 +1,15 @@
 <head>
   <script src="functions.js"></script>
+  <link type="text/css" rel="stylesheet" href="stylesheet.css">
 </head>
 
 <body>
+  <div class="topnavDiv">
+  <a href="index.html" class="topnav">Home</a>
+  <a href="functionUI.html" class="topnav">CodingBat</a>
+  <a href="fractalDisplay.html" class="topnav">Fractals</a>
+  </div>
+
   <h1>Pick the algorithm you want to interact with!</h1>
   <select id="algorithmList">
     <option value = "triangle">triangle</option>
@@ -47,7 +54,6 @@
     function showResult() {
       alg = document.getElementById("algorithmList").value;
       var p = eval("params(" + alg + ")");
-      console.log("p",p);
       inputs = {};
       p.forEach(function(parameterName) {
         inputs[parameterName] = document.getElementById(parameterName).value;
@@ -61,11 +67,11 @@
           inpStr += inputs[key] + ", ";
         }
       }
-      console.log(inpStr);
       inpStr = inpStr.substring(0,inpStr.length-1);
       result = eval(alg + "(" + inpStr + ");");
       document.getElementById("results").innerHTML = "";
-      document.getElementById("results").innerHTML = result;
+      document.getElementById("results").innerHTML = "The result of " +
+        alg + "(" + inpStr.substring(0,inpStr.length-1) + ")" + "  is:<br>" + result;
     }
   </script>
 </body>

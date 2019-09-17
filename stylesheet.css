@@ -1,0 +1,19 @@
+a {
+  text-decoration: none;
+}
+
+.topnav {
+  color:rgb(255,255,255);
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+.topnavDiv {
+  background-color: rgb(19,82,36);
+}
+
+.topnavDiv a:hover {
+  background-color: rgb(200,200,200);
+  color: rgb(30,30,0);
+  height:20px;
+}
