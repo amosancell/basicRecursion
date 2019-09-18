@@ -9,9 +9,9 @@ function draw() {
   background(0);
   stroke(255);
   noFill();
-  //drawCircle(300,200,300);
-  binaryTree(width/2,0,200,90);
-  noLoop();
+  drawCircle(300,200,300);
+  //binaryTree(width/2,0,200,90);
+  //noLoop();
 }
 
 function drawCircle(x, y, d) {
