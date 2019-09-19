@@ -12,8 +12,15 @@
   <a href="fractalDisplay.html" class="topnav">Fractals</a>
   </div>
 
-  <button type="button" onclick="startSong();" id="startButton">Start Song</button>
+  <select id="songList" onChange="changeSong()">
+    <option value="./songs/TheWho-WontGetFooledAgain.mp3">The Who-Won't Get Fooled Again</option>
+    <option value="./songs/GimmeShelter.mp3">Rolling Stones-Gimme Shelter</option>
+  </select>
+
+
+  <button type="button" onclick="startDisp(); startSong();" id="startButton">Start Song</button>
   <button type="button" onclick="pauseSong();" id="pauseButtong">Pause Song</button>
+  <br>
 
 
 </body>
