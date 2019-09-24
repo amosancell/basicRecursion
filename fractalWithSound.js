@@ -20,8 +20,8 @@ function draw() {
   background(0);
   if(songChosen) {
     if(song.isPlaying()) {
-      translate(100,150)
-      if(amp.getLevel() < 0.1) {
+      translate(width/2,height/2);
+      /*if(amp.getLevel() < 0.1) {
         rotate(PI/8);
       }
       else if(amp.getLevel() < 0.2) {
@@ -29,16 +29,24 @@ function draw() {
       }
       else if(amp.getLevel() < 0.3) {
         rotate(3*PI/8);
-      }
+      }*/
+      rotate(PI/Math.floor(amp.getLevel()*10))
+      translate(-width/2,-height/2);
       //rotate(PI/8*Math.sign(0.25 - amp.getLevel()));
-      sierpTri(200,300,350*amp.getLevel(),color(255,255,255),random(30,100)*amp.getLevel());
+      sierpTri(width/2,height/2,350*amp.getLevel(),color(255,255,255),random(30,100)*amp.getLevel());
     }
     else {
-      sierpTri(200,300,300,color(255,255,255),10);
+      sierpTri(width/2,height/2,300,color(255,255,255),10);
     }
   }
 }
-
+/*
+// helper function. Returns angle to rotate given amplitude of song.
+// one of 8 rotations
+function angle(val) {
+  return Math.floor(amp*10)
+}
+*/
 function changeSong() {
   songPath = document.getElementById("songList").value;
   preload();
