@@ -9,10 +9,22 @@ function draw() {
   background(0);
   stroke(255);
   noFill();
-  drawCircle(300,200,300);
+  //drawCircle(300,200,300);
   //binaryTree(width/2,0,200,90);
   //noLoop();
 }
+
+function sierpTri(x,y,l,c,limit) {
+  noFill();
+  stroke(c);
+  triangle(x,y,x+l,y,x+l/2,y+l*sqrt(3)/2.0);
+  if(l > limit) {
+    sierpTri(x,y,l/2,color(255,0,0),limit);
+    sierpTri(x+l/2,y,l/2,color(0,255,0),limit);
+    sierpTri(x+(l/2.0)*0.5,y+(l/2.0)*sqrt(3)/2.0,l/2,color(0,0,255),limit);
+  }
+}
+
 
 function drawCircle(x, y, d) {
   ellipse(x, y, d);

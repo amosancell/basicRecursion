@@ -18,42 +18,47 @@ function setup() {
 
 function draw() {
   background(0);
-  if(songChosen) {
+  /*if(songChosen) {
     if(song.isPlaying()) {
       translate(width/2,height/2);
-      /*if(amp.getLevel() < 0.1) {
-        rotate(PI/8);
-      }
-      else if(amp.getLevel() < 0.2) {
-        rotate(2*PI/8);
-      }
-      else if(amp.getLevel() < 0.3) {
-        rotate(3*PI/8);
-      }*/
       rotate(PI/Math.floor(amp.getLevel()*10))
       translate(-width/2,-height/2);
-      //rotate(PI/8*Math.sign(0.25 - amp.getLevel()));
-      sierpTri(width/2,height/2,350*amp.getLevel(),color(255,255,255),random(30,100)*amp.getLevel());
+      sierpTri(width/2+30,height/2,350*amp.getLevel(),color(255,255,255),random(30,100)*amp.getLevel());
     }
     else {
       sierpTri(width/2,height/2,300,color(255,255,255),10);
     }
+  }*/
+
+  if(songChosen) {
+    /*if(song.isPlaying() && !isNaN(amp.getLevel())) {
+      sierpTri(50,50,500,color(255,255,255),70*amp.getLevel());
+      console.log("yay");
+    }
+    else {
+      sierpTri(50,50,500,color(255,255,255),70);
+      console.log("hi");
+    }*/
+    //console.log(amp.getLevel(), isNaN(amp.getLevel()));
+    if(!isNaN(amp.getLevel()) && amp.getLevel() >= 0.1) {
+      shearX(mouseX*PI/width);
+      sierpTri(50,50,300,color(255,255,255),Math.floor(50*amp.getLevel()));
+      //noLoop();
+    }
+    else {
+      console.log("else");
+      fill(255,255,255);
+      ellipse(100,100,100,100);
+    }
   }
 }
-/*
-// helper function. Returns angle to rotate given amplitude of song.
-// one of 8 rotations
-function angle(val) {
-  return Math.floor(amp*10)
-}
-*/
+
 function changeSong() {
   songPath = document.getElementById("songList").value;
   preload();
 }
 
 function startDisp() {
-  console.log('hi');
   songChosen = true;
 }
 
