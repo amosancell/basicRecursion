@@ -24,9 +24,15 @@
     the file (like index.html) that you would like to see.
   </p>
 
-  <select id="songList" onChange="changeSong()">
+  <select id="songList" onChange="pauseSong(); changeSong();">
     <option value="./songs/TheWho-WontGetFooledAgain.mp3">The Who-Won't Get Fooled Again</option>
     <option value="./songs/GimmeShelter.mp3">Rolling Stones-Gimme Shelter</option>
+    <option value="./songs/WichitaLineman-GlenCampbell.mp3">Glen Campbell-Wichita Lineman</option>
+  </select>
+
+  <select id="patternList" onChange="pauseSong(); pickPattern();">
+    <option value="moving">Moving</option>
+    <option value="depth">Depth</option>
   </select>
 
 
